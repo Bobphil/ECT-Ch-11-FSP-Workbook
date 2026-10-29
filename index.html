@@ -1,75 +1,1222 @@
-<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>PHIL-HIST-SUPER-3 — The Philosophical Mapbook</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Chapter 11 Workbook · The Adaptive Moral Commonwealth · v2.2</title>
+    <style>
+    :root {
+        --bg: #f7f4ee;
+        --paper: #fffdf9;
+        --ink: #24211e;
+        --muted: #5b534b;
+        --line: #ddd4c8;
+        --accent: #245f5b;
+        --accent2: #7a5138;
+        --soft: #edf5f4;
+        --soft2: #f4ece3;
+        --warn: #8b5b16;
+        --danger: #8a3434;
+        --success: #2f6a49;
+        --focus: #155bd5;
+        --shadow: 0 14px 38px rgba(48, 40, 32, .10);
+    }
+
+    * {
+        box-sizing:border-box
+    }
+
+    html {
+        scroll-behavior: smooth
+    }
+
+    body {
+        margin: 0;
+        background: linear-gradient(180deg, #fbfaf7, var(--bg));
+        color: var(--ink);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.6
+    }
+
+    a {
+        color:var(--accent)
+    }
+
+    button, input, select, textarea {
+        font: inherit
+    }
+
+    button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, a:focus-visible {
+        outline: 3px solid var(--focus);
+        outline-offset: 2px
+    }
+
+    .wrap {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 24px 16px 64px
+    }
+
+    .hero {
+        display: grid;
+        grid-template-columns: 1.5fr .9fr;
+        gap: 18px;
+        margin-bottom: 20px
+    }
+
+    .card, .panel, .side {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        box-shadow: var(--shadow)
+    }
+
+    .card {
+        padding:30px
+    }
+
+    .side {
+        padding:22px
+    }
+
+    .panel {
+        padding: 26px;
+        scroll-margin-top: 18px
+    }
+
+    .kicker {
+        display: inline-flex;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: var(--soft);
+        color: var(--accent);
+        font-weight: 800;
+        font-size: .82rem;
+        letter-spacing: .04em;
+        text-transform: uppercase
+    }
+
+    h1 {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(2.2rem, 5vw, 4.4rem);
+        line-height: .98;
+        letter-spacing: -.045em;
+        margin: 16px 0 10px
+    }
+
+    h2, h3 {
+        font-family: Georgia, "Times New Roman", serif
+    }
+
+    .subtitle {
+        font-size: 1.12rem;
+        color: var(--muted);
+        max-width: 780px
+    }
+
+    .badges {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top:18px
+    }
+
+    .badge {
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: var(--soft2);
+        font-weight: 700;
+        color: var(--accent2);
+        font-size: .88rem
+    }
+
+    .side h2 {
+        margin-top: 0;
+        font-size:1.2rem
+    }
+
+    .skill {
+        padding: 12px 13px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: #fffaf4;
+        margin:10px 0
+    }
+
+    .skill strong {
+        display: block;
+        color: var(--accent2)
+    }
+
+    .layout {
+        display: grid;
+        grid-template-columns: 260px 1fr;
+        gap:20px
+    }
+
+    .toc {
+        position: sticky;
+        top: 14px;
+        align-self: start;
+        background: rgba(255, 253, 249, .97);
+        border: 1px solid var(--line);
+        border-radius: 17px;
+        padding: 15px;
+        box-shadow: 0 8px 24px rgba(48, 40, 32, .08)
+    }
+
+    .toc h2 {
+        font: 800 .82rem system-ui;
+        text-transform: uppercase;
+        letter-spacing: .06em;
+        color: var(--muted);
+        margin:0 0 8px
+    }
+
+    .toc a {
+        display: block;
+        text-decoration: none;
+        color: var(--ink);
+        font-weight: 700;
+        padding: 7px 9px;
+        border-radius:10px
+    }
+
+    .toc a:hover {
+        background: var(--soft)
+    }
+
+    .progress {
+        height: 10px;
+        border-radius: 999px;
+        background: #e5ddd3;
+        overflow: hidden;
+        margin:10px 0 4px
+    }
+
+    .bar {
+        height: 100%;
+        width: 0;
+        background: linear-gradient(90deg, var(--accent), #b17a44);
+        transition: width .2s ease
+    }
+
+    .main {
+        display: grid;
+        gap:18px
+    }
+
+    .head {
+        display: grid;
+        grid-template-columns: 44px 1fr;
+        gap: 13px;
+        align-items:start
+    }
+
+    .num {
+        width: 44px;
+        height: 44px;
+        border-radius: 13px;
+        background: var(--accent);
+        color: white;
+        display: grid;
+        place-items: center;
+        font-weight:900
+    }
+
+    .head h2 {
+        margin: 0;
+        font-size:1.55rem
+    }
+
+    .hint {
+        margin: 4px 0 0;
+        color: var(--muted)
+    }
+
+    .notice, .firewall, .worked {
+        padding: 15px 16px;
+        border-radius: 14px;
+        margin:14px 0
+    }
+
+    .notice {
+        background: #f8f1e8;
+        border: 1px solid #e4d4c0;
+        border-left:5px solid #b7793f
+    }
+
+    .firewall {
+        background: #eef6f5;
+        border: 1px solid #c7ddda;
+        border-left:5px solid var(--accent)
+    }
+
+    .worked {
+        background: #f4f8f7;
+        border: 1px solid #c7ddda
+    }
+
+    .firewall strong, .worked strong {
+        color: var(--accent)
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap:14px
+    }
+
+    .full {
+        grid-column: 1/-1
+    }
+
+    label {
+        display: block;
+        font-weight: 800;
+        margin:0 0 6px
+    }
+
+    .micro {
+        display: block;
+        color: var(--muted);
+        font-weight: 500;
+        font-size: .9rem;
+        margin-top: 4px
+    }
+
+    textarea, input[type=text], select {
+        width: 100%;
+        border: 1px solid #d3c8bb;
+        border-radius: 12px;
+        background: white;
+        padding: 11px 12px;
+        color:var(--ink)
+    }
+
+    textarea {
+        min-height: 110px;
+        resize:vertical
+    }
+
+    .short {
+        min-height: 80px
+    }
+
+    .req {
+        color:var(--danger)
+    }
+
+    .counter {
+        font-size: .86rem;
+        color: var(--muted);
+        text-align:right
+    }
+
+    .counter.ok {
+        color: var(--success);
+        font-weight:800
+    }
+
+    .counter.bad {
+        color: var(--danger);
+        font-weight: 800
+    }
+
+    .checkline {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        padding: 11px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background:#fff
+    }
+
+    .checkline input {
+        margin-top: 5px
+    }
+
+    .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px;
+        margin-top:16px
+    }
+
+    .btn {
+        border: 0;
+        border-radius: 999px;
+        padding: 10px 15px;
+        font-weight: 850;
+        cursor: pointer;
+        min-height:42px
+    }
+
+    .btn.primary {
+        background: var(--accent);
+        color:white
+    }
+
+    .btn.secondary {
+        background: var(--soft2);
+        color: var(--accent2);
+        border:1px solid #dbc8b6
+    }
+
+    .btn.ghost {
+        background: transparent;
+        color: var(--accent);
+        border:1px solid #bad7d3
+    }
+
+    .btn.danger {
+        background: #f8e8e8;
+        color: var(--danger);
+        border:1px solid #e0c1c1
+    }
+
+    .btn:disabled {
+        opacity: .5;
+        cursor: not-allowed
+    }
+
+    .status {
+        padding: 10px 12px;
+        border-radius: 12px;
+        background: #f4f0ea;
+        color: var(--muted);
+        font-weight:750
+    }
+
+    .status.ready {
+        background: #e7f3ea;
+        color:var(--success)
+    }
+
+    .status.reopen {
+        background: #fff2df;
+        color: var(--warn)
+    }
+
+    .output {
+        white-space: pre-wrap;
+        background: #151412;
+        color: #f7f3ec;
+        padding: 18px;
+        border-radius: 14px;
+        min-height: 420px;
+        font: 14px/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        overflow: auto
+    }
+
+    .smallcaps {
+        font-weight: 900;
+        letter-spacing: .04em;
+        text-transform: uppercase;
+        font-size: .78rem;
+        color: var(--muted)
+    }
+
+    hr {
+        border: 0;
+        border-top: 1px solid var(--line);
+        margin: 22px 0
+    }
+
+    @media (max-width: 950px) {
+        .hero, .layout {
+            grid-template-columns:1fr
+        }
+
+        .toc {
+            position:static
+        }
+
+        .grid {
+            grid-template-columns:1fr
+        }
+
+        .full {
+            grid-column: auto
+        }
+    }
+
+    @media (max-width: 650px) {
+        .wrap {
+            padding:14px 10px 42px
+        }
+
+        .card, .side, .panel {
+            padding: 18px;
+            border-radius:16px
+        }
+
+        .head {
+            grid-template-columns:1fr
+        }
+
+        .actions .btn {
+            width: 100%
+        }
+    }
+
+    @media print {
+        body {
+            background:white
+        }
+
+        .hero, .toc, .actions, .privacyControls, .saveMeta {
+            display:none !important
+        }
+
+        .layout {
+            display:block
+        }
+
+        .panel {
+            box-shadow: none;
+            border: 1px solid #bbb;
+            page-break-inside:avoid
+        }
+
+        .output {
+            background: white;
+            color: black;
+            border: 1px solid #999
+        }
+    }
+    </style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="topline">
-      <div><div class="brand">PHIL-HIST-SUPER-3</div><div class="tiny">READ → INQUIRE → CARRY FORWARD → APPLY</div></div>
-      <div id="saveStatus" class="save-pill"><span class="dot"></span><span class="save-text">Checking storage…</span></div>
+    <div class="wrap">
+        <header class="hero">
+            <section class="card">
+                <span class="kicker">Ethics Beyond Boundaries · Chapter 11 Workbook · v2.2</span>
+                <h1>The Adaptive Moral Commonwealth</h1>
+                <p class="subtitle">
+                    <strong>Petrov and Arkhipov's real cases</strong>
+                    , visible stability and hidden fragility, the Civilizational Chiliagon — with a genuine FSP process trail from evidence to judgment, standing, shared task, repair, and REOPEN.
+                </p>
+                <div class="badges">
+                    <span class="badge">45–60 minutes</span>
+                    <span class="badge">Chapter move: Share the world</span>
+                    <span class="badge">FSP transfer laboratory</span>
+                </div>
+                <div class="actions">
+                    <a class="btn primary" href="#before">Start Workbook</a>
+                    <button class="btn ghost" id="printBtn" type="button">Print / Save PDF</button>
+                </div>
+            </section>
+            <aside class="side">
+                <h2>What you are practicing</h2>
+                <div class="skill">
+                    <strong>Ethics</strong>
+                     Preserve public reason, warning routes, standing, and repair across disagreement.
+                </div>
+                <div class="skill">
+                    <strong>Critical thinking</strong>
+                     Separate evidence, warrant, interpretation, attribution, judgment, authorization, and REOPEN.
+                </div>
+                <div class="skill">
+                    <strong>FSP</strong>
+                     Cooperation Without Convergence + Normative Task Space + typed standing + Authorial Return.
+                </div>
+                <div class="status saveMeta" id="saveStatus">Draft stays on this device.</div>
+            </aside>
+        </header>
+
+        <div class="layout">
+            <nav class="toc" aria-label="Workbook sections">
+                <h2>Progress</h2>
+                <div class="progress">
+                    <div class="bar" id="bar"></div>
+                </div>
+                <div class="micro" id="progressText">0% complete</div>
+                <a href="#before">Before You Begin</a>
+                <a href="#move1">1. Evidence Trail</a>
+                <a href="#move2">2. Public Reason</a>
+                <a href="#move3">3. AMC / Chiliagon</a>
+                <a href="#move4">4. Repair + REOPEN</a>
+                <a href="#return">Authorial Return</a>
+                <a href="#output">Output Card</a>
+            </nav>
+
+            <main class="main">
+                <section class="panel" id="before">
+                    <div class="head">
+                        <div class="num">✓</div>
+                        <div>
+                            <h2>Before You Begin</h2>
+                            <p class="hint">This is a high-stakes transfer case, not a role-play in which you are asked to imagine yourself personally responsible for nuclear war.</p>
+                        </div>
+                    </div>
+                    <div class="notice">
+                        <strong>Privacy-first:</strong>
+                         You may use Petrov and Arkhipov throughout. No private personal example is required. If your instructor invites transfer, you may instead use a public, fictional, or low-stakes case.
+                    </div>
+                    <div class="firewall">
+                        <strong>Central route:</strong>
+                         Historical evidence → interpretation → warrant → standing → shared task → repair → REOPEN → Authorial Return.
+                    </div>
+                    <div class="grid privacyControls">
+                        <div>
+                            <label for="studentName">Name (optional)</label>
+                            <input id="studentName" data-field="studentName" type="text" placeholder="Add only if your instructor asks"/>
+                        </div>
+                        <div>
+                            <label for="caseMode">
+                                Case route 
+                                <span class="req">*</span>
+                            </label>
+                            <select id="caseMode" data-field="caseMode" data-required="1">
+                                <option value="">Choose one…</option>
+                                <option>Petrov and Arkhipov — chapter anchors</option>
+                                <option>Petrov only</option>
+                                <option>Arkhipov only</option>
+                                <option>Public transfer case</option>
+                                <option>Fictional / low-stakes transfer case</option>
+                            </select>
+                        </div>
+                        <div class="full checkline">
+                            <input type="checkbox" id="privacyAck" data-field="privacyAck" data-required="1"/>
+                            <label for="privacyAck">I understand that I may complete this workbook entirely with public/historical material and should not disclose private or sensitive information.</label>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="panel" id="move1">
+                    <div class="head">
+                        <div class="num">1</div>
+                        <div>
+                            <h2>Move 1 — Build the Evidence / Provenance Trail</h2>
+                            <p class="hint">What actually happened, and what are we adding as interpretation?</p>
+                        </div>
+                    </div>
+                    <div class="worked">
+                        <strong>Historical anchors</strong>
+                        <p>
+                            <b>Petrov, 1983:</b>
+                             a Soviet early-warning system indicated what appeared to be an American missile launch. Petrov judged the warning probably false; the warning was false.
+                        </p>
+                        <p>
+                            <b>Arkhipov, 1962:</b>
+                             aboard Soviet submarine B-59 during the Cuban Missile Crisis, a decision involving use of a nuclear torpedo required agreement among senior officers. Arkhipov did not agree.
+                        </p>
+                    </div>
+                    <div class="grid">
+                        <div>
+                            <label for="hist1">
+                                Historical claim 1 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea id="hist1" data-field="hist1" data-required="1" data-min="12" placeholder="State one claim as close as possible to the historical record."></textarea>
+                            <div class="counter" data-count="hist1"></div>
+                        </div>
+                        <div>
+                            <label for="hist2">
+                                Historical claim 2 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea id="hist2" data-field="hist2" data-required="1" data-min="12" placeholder="State a second historical claim without adding interpretation."></textarea>
+                            <div class="counter" data-count="hist2"></div>
+                        </div>
+                        <div class="full">
+                            <label for="interpretation">
+                                Interpretation 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea id="interpretation" data-field="interpretation" data-required="1" data-min="18" placeholder="What may these cases reveal about a system, warning route, or dependence on individual judgment?"></textarea>
+                            <div class="counter" data-count="interpretation"></div>
+                        </div>
+                        <div>
+                            <label for="frameworkDist">
+                                Why is the AMC framework different from historical evidence? 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea id="frameworkDist" data-field="frameworkDist" data-required="1" data-min="18"></textarea>
+                            <div class="counter" data-count="frameworkDist"></div>
+                        </div>
+                        <div>
+                            <label for="bounded1">
+                                Your first bounded judgment 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea id="bounded1" data-field="bounded1" data-required="1" data-min="18" placeholder="Use a qualifier. What is the strongest claim the evidence presently supports?"></textarea>
+                            <div class="counter" data-count="bounded1"></div>
+                        </div>
+                    </div>
+                    <div class="firewall">
+                        <strong>Process-trail firewall:</strong>
+                         Historical evidence ≠ interpretation. Interpretation ≠ course framework. Course framework ≠ proven fact. Student judgment ≠ automatic authorization.
+                    </div>
+                </section>
+
+                <section class="panel" id="move2">
+                    <div class="head">
+                        <div class="num">2</div>
+                        <div>
+                            <h2>Move 2 — Reconstruct Public Reason Under Pressure</h2>
+                            <p class="hint">What claim, evidence, warrant, uncertainty, and standing existed when ordinary deliberation had nearly run out of time?</p>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div>
+                            <label for="focusCase">
+                                Focus case 
+                                <span class="req">*</span>
+                            </label>
+                            <select id="focusCase" data-field="focusCase" data-required="1">
+                                <option value="">Choose…</option>
+                                <option>Petrov</option>
+                                <option>Arkhipov</option>
+                                <option>Compare both</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="immediateClaim">
+                                Immediate claim being pressed 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea class="short" id="immediateClaim" data-field="immediateClaim" data-required="1" data-min="10" placeholder="What conclusion was the person effectively being asked to accept?"></textarea>
+                            <div class="counter" data-count="immediateClaim"></div>
+                        </div>
+                        <div>
+                            <label for="availableEvidence">
+                                Evidence genuinely available then 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea id="availableEvidence" data-field="availableEvidence" data-required="1" data-min="18"></textarea>
+                            <div class="counter" data-count="availableEvidence"></div>
+                        </div>
+                        <div>
+                            <label for="warrant">
+                                Warrant 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea id="warrant" data-field="warrant" data-required="1" data-min="15" placeholder="If ________, then ________. What connects the evidence to the demanded action?"></textarea>
+                            <div class="counter" data-count="warrant"></div>
+                        </div>
+                        <div>
+                            <label for="rebuttal">
+                                Rebuttal / uncertainty 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea id="rebuttal" data-field="rebuttal" data-required="1" data-min="15" placeholder="What gave reason to hesitate or prevented certainty?"></textarea>
+                            <div class="counter" data-count="rebuttal"></div>
+                        </div>
+                        <div>
+                            <label for="qualified">
+                                Qualified judgment 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea id="qualified" data-field="qualified" data-required="1" data-min="18" placeholder="The evidence presently suggests…, but … remains uncertain."></textarea>
+                            <div class="counter" data-count="qualified"></div>
+                        </div>
+                    </div>
+                    <hr/>
+                    <h3>Standing Under Pressure</h3>
+                    <div class="grid">
+                        <div>
+                            <label for="standingOps">Direct operational knowledge</label>
+                            <textarea class="short" id="standingOps" data-field="standingOps"></textarea>
+                        </div>
+                        <div>
+                            <label for="standingAuthority">Formal authority</label>
+                            <textarea class="short" id="standingAuthority" data-field="standingAuthority"></textarea>
+                        </div>
+                        <div>
+                            <label for="standingInterpret">
+                                Responsibility for interpreting the signal 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea class="short" id="standingInterpret" data-field="standingInterpret" data-required="1" data-min="10"></textarea>
+                            <div class="counter" data-count="standingInterpret"></div>
+                        </div>
+                        <div>
+                            <label for="standingRepair">
+                                Responsibility for later institutional repair 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea class="short" id="standingRepair" data-field="standingRepair" data-required="1" data-min="10"></textarea>
+                            <div class="counter" data-count="standingRepair"></div>
+                        </div>
+                        <div class="full">
+                            <label for="standingAffected">
+                                Affected-party standing outside the room 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea id="standingAffected" data-field="standingAffected" data-required="1" data-min="15" placeholder="Who could bear the consequences without possessing direct operational authority?"></textarea>
+                            <div class="counter" data-count="standingAffected"></div>
+                        </div>
+                    </div>
+                    <div class="firewall">
+                        <strong>Standing firewall:</strong>
+                         Expertise ≠ total authority. Authority ≠ complete knowledge. Affectedness ≠ operational expertise.
+                    </div>
+                    <h3>Attribution Is Not Commitment</h3>
+                    <label for="attribution">
+                        Why does rejecting one conclusion not automatically commit someone to the opposite conclusion? 
+                        <span class="req">*</span>
+                    </label>
+                    <textarea id="attribution" data-field="attribution" data-required="1" data-min="20"></textarea>
+                    <div class="counter" data-count="attribution"></div>
+                    <div class="firewall">
+                        <strong>Commitment firewall:</strong>
+                         Attributed commitment ≠ acknowledged commitment. Showing that one justification fails ≠ proving the opposite conclusion.
+                    </div>
+                </section>
+
+                <section class="panel" id="move3">
+                    <div class="head">
+                        <div class="num">3</div>
+                        <div>
+                            <h2>Move 3 — Build the Adaptive Moral Commonwealth Task Space</h2>
+                            <p class="hint">Move outward from the heroic-person story toward system fragility, compression, and cooperation without convergence.</p>
+                        </div>
+                    </div>
+                    <h3>Visible Stability, Hidden Fragility</h3>
+                    <div class="grid">
+                        <div>
+                            <label for="visibleStability">
+                                What looked stable? 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea id="visibleStability" data-field="visibleStability" data-required="1" data-min="15"></textarea>
+                            <div class="counter" data-count="visibleStability"></div>
+                        </div>
+                        <div>
+                            <label for="hiddenFragility">
+                                What might have been fragile? 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea id="hiddenFragility" data-field="hiddenFragility" data-required="1" data-min="18"></textarea>
+                            <div class="counter" data-count="hiddenFragility"></div>
+                        </div>
+                        <div>
+                            <label for="fragilityEvidence">
+                                Evidence supporting the fragility claim 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea id="fragilityEvidence" data-field="fragilityEvidence" data-required="1" data-min="15"></textarea>
+                            <div class="counter" data-count="fragilityEvidence"></div>
+                        </div>
+                        <div>
+                            <label for="fragilityWeakener">
+                                Evidence that would weaken your fragility claim 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea id="fragilityWeakener" data-field="fragilityWeakener" data-required="1" data-min="15"></textarea>
+                            <div class="counter" data-count="fragilityWeakener"></div>
+                        </div>
+                    </div>
+                    <div class="firewall">
+                        <strong>Misuse firewall:</strong>
+                         Visible stability ≠ proof of health. But visible stability ≠ proof of hidden fragility. The caution requires evidence either way.
+                    </div>
+
+                    <h3>The Civilizational Chiliagon — Compression Check</h3>
+                    <p>The problem is too large and dynamic for any unaided mind to hold directly. Models, institutions, warning systems, statistics, scenarios, and computation extend cognition — but they also compress.</p>
+                    <div class="grid">
+                        <div>
+                            <label for="compress1">
+                                Hard-to-hold relation 1 
+                                <span class="req">*</span>
+                            </label>
+                            <input type="text" id="compress1" data-field="compress1" data-required="1"/>
+                        </div>
+                        <div>
+                            <label for="compress2">
+                                Hard-to-hold relation 2 
+                                <span class="req">*</span>
+                            </label>
+                            <input type="text" id="compress2" data-field="compress2" data-required="1"/>
+                        </div>
+                        <div>
+                            <label for="compress3">
+                                Hard-to-hold relation 3 
+                                <span class="req">*</span>
+                            </label>
+                            <input type="text" id="compress3" data-field="compress3" data-required="1"/>
+                        </div>
+                        <div>
+                            <label for="compressionLoss">
+                                What ethically important information might disappear in an “attack / no attack” compression? 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea id="compressionLoss" data-field="compressionLoss" data-required="1" data-min="18"></textarea>
+                            <div class="counter" data-count="compressionLoss"></div>
+                        </div>
+                    </div>
+                    <div class="firewall">
+                        <strong>Compression firewall:</strong>
+                         Simplification may be necessary. Necessary compression ≠ harmless compression. Model ≠ world.
+                    </div>
+
+                    <h3>Cooperation Without Convergence</h3>
+                    <div class="grid">
+                        <div class="full">
+                            <label for="sharedTask">
+                                Shared task 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea id="sharedTask" data-field="sharedTask" data-required="1" data-min="18" placeholder="State a bounded task specific enough that people with different ultimate values could still cooperate."></textarea>
+                            <div class="counter" data-count="sharedTask"></div>
+                        </div>
+                        <div>
+                            <label for="participant1">
+                                Participant/institution 1 + different reason 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea class="short" id="participant1" data-field="participant1" data-required="1" data-min="10"></textarea>
+                            <div class="counter" data-count="participant1"></div>
+                        </div>
+                        <div>
+                            <label for="participant2">
+                                Participant/institution 2 + different reason 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea class="short" id="participant2" data-field="participant2" data-required="1" data-min="10"></textarea>
+                            <div class="counter" data-count="participant2"></div>
+                        </div>
+                        <div>
+                            <label for="participant3">Participant/institution 3 + different reason</label>
+                            <textarea class="short" id="participant3" data-field="participant3"></textarea>
+                        </div>
+                        <div>
+                            <label for="nonconvergence">
+                                What deeper disagreement could remain unresolved? 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea id="nonconvergence" data-field="nonconvergence" data-required="1" data-min="15"></textarea>
+                            <div class="counter" data-count="nonconvergence"></div>
+                        </div>
+                    </div>
+
+                    <h3>AMC Direction Test</h3>
+                    <div class="grid">
+                        <div>
+                            <label for="towardAMC">
+                                One feature pointing toward an Adaptive Moral Commonwealth 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea id="towardAMC" data-field="towardAMC" data-required="1" data-min="15"></textarea>
+                            <div class="counter" data-count="towardAMC"></div>
+                        </div>
+                        <div>
+                            <label for="awayAMC">
+                                One feature pointing away from it 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea id="awayAMC" data-field="awayAMC" data-required="1" data-min="15"></textarea>
+                            <div class="counter" data-count="awayAMC"></div>
+                        </div>
+                        <div class="full">
+                            <label for="strongerLesson">
+                                Complete the stronger lesson 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea id="strongerLesson" data-field="strongerLesson" data-required="1" data-min="18" placeholder="The lesson is not that a good society needs more heroic individuals. The stronger lesson is that…"></textarea>
+                            <div class="counter" data-count="strongerLesson"></div>
+                        </div>
+                    </div>
+                    <div class="firewall">
+                        <strong>Connected-Doing firewall:</strong>
+                         Connected capability ≠ super-subject. Cooperation ≠ convergence.
+                    </div>
+                </section>
+
+                <section class="panel" id="move4">
+                    <div class="head">
+                        <div class="num">4</div>
+                        <div>
+                            <h2>Move 4 — Repair the Architecture and Specify REOPEN</h2>
+                            <p class="hint">Move from diagnosis to a bounded institutional intervention, then ask what could make your own repair wrong.</p>
+                        </div>
+                    </div>
+                    <div class="notice">
+                        <strong>Do not design military technology.</strong>
+                         This is an ethics and institutional-design exercise. Work at the level of safeguards, verification, communication, authority, warning routes, dissent protection, review, and decision structure.
+                    </div>
+                    <div class="grid">
+                        <div>
+                            <label for="repairTarget">
+                                Repair target 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea id="repairTarget" data-field="repairTarget" data-required="1" data-min="15" placeholder="What structural feature needs attention?"></textarea>
+                            <div class="counter" data-count="repairTarget"></div>
+                        </div>
+                        <div>
+                            <label for="repairMechanism">
+                                Repair mechanism 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea id="repairMechanism" data-field="repairMechanism" data-required="1" data-min="18" placeholder="What changes the architecture rather than merely demanding better character?"></textarea>
+                            <div class="counter" data-count="repairMechanism"></div>
+                        </div>
+                        <div>
+                            <label for="repairStanding">
+                                Standing map for the repair 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea id="repairStanding" data-field="repairStanding" data-required="1" data-min="18" placeholder="Who may design, authorize, implement, challenge, and evaluate it?"></textarea>
+                            <div class="counter" data-count="repairStanding"></div>
+                        </div>
+                        <div>
+                            <label for="newBurden">
+                                New burden / unintended consequence 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea id="newBurden" data-field="newBurden" data-required="1" data-min="15"></textarea>
+                            <div class="counter" data-count="newBurden"></div>
+                        </div>
+                        <div>
+                            <label for="reopenEvidence">
+                                REOPEN trigger — evidence or outcome 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea id="reopenEvidence" data-field="reopenEvidence" data-required="1" data-min="15"></textarea>
+                            <div class="counter" data-count="reopenEvidence"></div>
+                        </div>
+                        <div>
+                            <label for="reopenStanding">
+                                REOPEN trigger — affected-party or expert challenge 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea id="reopenStanding" data-field="reopenStanding" data-required="1" data-min="15"></textarea>
+                            <div class="counter" data-count="reopenStanding"></div>
+                        </div>
+                        <div class="full">
+                            <label for="reopenAction">
+                                If either trigger occurs, what should the institution do? 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea id="reopenAction" data-field="reopenAction" data-required="1" data-min="15"></textarea>
+                            <div class="counter" data-count="reopenAction"></div>
+                        </div>
+                    </div>
+                    <div class="firewall">
+                        <strong>REOPEN firewall:</strong>
+                         Decision ≠ permanent closure. Feedback ≠ effective REOPEN unless there is a route through which feedback can change the decision.
+                    </div>
+                </section>
+
+                <section class="panel" id="return">
+                    <div class="head">
+                        <div class="num">↩</div>
+                        <div>
+                            <h2>Authorial Return</h2>
+                            <p class="hint">The workbook returns the enlarged map to you. State your own bounded judgment and its claim ceiling.</p>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="full">
+                            <label for="finalJudgment">
+                                My bounded judgment 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea id="finalJudgment" data-field="finalJudgment" data-required="1" data-min="24" placeholder="Given the historical evidence and the limits of this analysis, I think the Petrov and Arkhipov cases most strongly support the judgment that…"></textarea>
+                            <div class="counter" data-count="finalJudgment"></div>
+                        </div>
+                        <div>
+                            <label for="notClaiming">
+                                What I am not claiming 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea id="notClaiming" data-field="notClaiming" data-required="1" data-min="15"></textarea>
+                            <div class="counter" data-count="notClaiming"></div>
+                        </div>
+                        <div>
+                            <label for="whatChanged">
+                                What changed in my map? 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea id="whatChanged" data-field="whatChanged" data-required="1" data-min="15" placeholder="What became visible when you moved from the individual hero story to the larger task space?"></textarea>
+                            <div class="counter" data-count="whatChanged"></div>
+                        </div>
+                        <div class="full">
+                            <label for="openQuestion">
+                                What remains open? 
+                                <span class="req">*</span>
+                            </label>
+                            <textarea id="openQuestion" data-field="openQuestion" data-required="1" data-min="12"></textarea>
+                            <div class="counter" data-count="openQuestion"></div>
+                        </div>
+                    </div>
+                    <div class="firewall">
+                        <strong>Authorial Return:</strong>
+                         The workbook may widen the map. It does not own your conclusion. Your judgment remains bounded, contestable, and reopenable.
+                    </div>
+                </section>
+
+                <section class="panel" id="output">
+                    <div class="head">
+                        <div class="num">★</div>
+                        <div>
+                            <h2>Chapter 11 Output Card</h2>
+                            <p class="hint">Complete the required fields above, then generate a compact record for the Personal Ethics Journal / SUPER workflow.</p>
+                        </div>
+                    </div>
+                    <div id="readiness" class="status reopen">Status: REOPEN — complete the required process trail.</div>
+                    <div class="actions">
+                        <button class="btn primary" id="generateBtn" type="button">Generate Output Card</button>
+                        <button class="btn secondary" id="copyBtn" type="button">Copy Output Card</button>
+                        <button class="btn secondary" id="downloadTxtBtn" type="button">Download .txt</button>
+                        <button class="btn ghost" id="downloadJsonBtn" type="button">Download recovery .json</button>
+                        <button class="btn danger" id="clearBtn" type="button">Clear saved draft</button>
+                    </div>
+                    <pre class="output" id="outputText" aria-live="polite">Your Output Card will appear here.</pre>
+                    <div class="notice">
+                        <strong>Journal firewall:</strong>
+                         Paste the Output Card into Question 1. Question 2 is the place for personal reflection. No private or sensitive disclosure is required.
+                    </div>
+                </section>
+            </main>
+        </div>
     </div>
-  </header>
-  <div class="layout">
-    <aside class="sidebar">
-      <div class="card compact route-select">
-        <label for="routeProfile">Route manifest</label>
-        <select id="routeProfile"></select>
-        <p id="routeDescription" class="tiny muted"></p><p id="routeStateDetail" class="tiny muted"></p>
-        <div class="progress-line"><span id="progressBar"></span></div>
-        <div id="progressText" class="tiny muted" style="margin-top:5px"></div>
-      </div>
-      <div id="nav"></div>
-    </aside>
-    <main class="main">
-      <section class="card hero">
-        <div class="meta"><span class="pill" id="typePill"></span><span class="pill" id="partPill"></span></div>
-        <h1 id="nodeTitle"></h1><p id="nodeSubtitle"></p><p id="nativeObject"></p>
-        <div class="actions"><button class="btn secondary" id="prevBtn">← Previous</button><button class="btn secondary" id="nextBtn">Next →</button></div>
-      </section>
-      <div class="tabs">
-        <button data-tab="read">READ</button><button data-tab="inquire" class="active">INQUIRE</button><button data-tab="map">MAP</button><button data-tab="media">MEDIA</button><button data-tab="data">DATA / RECOVERY</button>
-      </div>
+    <script>
+    (() => {
+        const KEY = 'CH11_AMC_FSP_v2_2';
+        const fields = [...document.querySelectorAll('[data-field]')];
+        const required = [...document.querySelectorAll('[data-required="1"]')];
+        const out = document.getElementById('outputText');
+        const bar = document.getElementById('bar');
+        const progressText = document.getElementById('progressText');
+        const readiness = document.getElementById('readiness');
+        const saveStatus = document.getElementById('saveStatus');
+        const wordCount = s => (s.trim().match(/\b[\w’'-]+\b/g) || []).length;
 
-      <section class="card pane" id="pane-read">
-        <h2>Canonical reading layer</h2><div id="readState"></div><p id="pressbooksHint" class="muted"></p>
-        <div class="inline-input"><input id="pressbooksInput" type="url" placeholder="https://your-pressbooks-site/..."><button class="btn secondary" id="savePressbooks">Save URL</button><button class="btn" id="openPressbooks">Open Pressbooks</button></div>
-        <div class="actions"><button class="btn secondary" id="downloadPressbooksTemplate">Download current URL map</button></div>
-      </section>
-
-      <section class="card pane active" id="pane-inquire">
-        <h2>Structured Inquiry — central persistent layer</h2>
-        <div id="inquiryForm"></div>
-        <div class="actions"><a class="btn secondary" id="nativeMapbook" target="_blank" rel="noopener">Open bundled native Mapbook</a><button class="btn" id="importNativeBtn">Import current native work</button><button class="btn warn" id="clearNodeBtn">Clear this central record</button></div>
-        <p id="nativeNote" class="tiny muted"></p><p id="nativeImportNote" class="tiny muted"></p>
-      </section>
-
-      <section class="card pane" id="pane-map">
-        <h2>Persistent Student Map</h2>
-        <div id="mapStats" class="grid3"></div>
-        <div id="ledgerBody"></div>
-      </section>
-
-      <section class="card pane" id="pane-media">
-        <h2>Video / explainer layer</h2><p class="muted">Explainers are supplementary: captions + transcript, no autoplay, and no essential argument available only in video.</p><div id="mediaBody"></div>
-      </section>
-
-      <section class="card pane" id="pane-data">
-        <h2>Data, migration, and recovery</h2>
-        <div class="data-section"><h3>Verified storage</h3><div id="storageDetail" class="good"></div><p class="tiny muted">The app tries IndexedDB first, then localStorage, sessionStorage, and finally in-memory state. Export remains available at every tier.</p></div>
-        <div class="data-section"><h3>Portable exports</h3><div class="actions"><button class="btn" id="exportFull">Export full Student Map</button><button class="btn secondary" id="exportCurrent">Export current record</button><button class="btn secondary" id="exportLedger">Export ledger + applications</button></div></div>
-        <div class="data-section"><h3>Safe import</h3><label class="btn secondary file-label">Choose JSON<input id="importFile" type="file" accept=".json,application/json" class="hidden"></label><div id="importPreview"><p class="muted">No import pending.</p></div><div id="importActions" class="actions hidden"><button class="btn warn" id="importReplace">Replace current map</button><button class="btn" id="importMerge">Merge safely</button><button class="btn secondary" id="importCancel">Cancel</button></div><p class="tiny">Merge preserves resident values on conflicts and records the incoming alternative in <code>import_conflicts</code>. Current unresolved conflicts: <strong id="conflictCount">0</strong>.</p></div>
-        <div class="data-section"><h3>Native + legacy MAPBOOK integration</h3><div class="actions"><button class="btn secondary" id="scanLegacyBtn">Scan this browser</button><button class="btn" id="importLegacyBtn" disabled>Normalize + import recognized Mapbook data</button></div><p>Detected Mapbook-related browser namespaces: <strong id="legacyCount">0</strong>. Legacy source keys are never deleted automatically.</p><pre id="legacyPreview">Scan not yet run.</pre></div>
-        <div class="data-section"><h3>Recovery harness</h3><div class="actions"><button class="btn" id="runTestsBtn">Run recovery checks</button></div><p id="testSummary" class="muted"></p><div id="testResults"></div></div>
-        <div class="data-section"><h3>Reset</h3><button class="btn warn" id="newMapBtn">Start a new empty Student Map</button></div>
-      </section>
-      <p class="footer-note">Privacy default: no name, email, institutional identifier, or hidden analytics ID is required. This SUPER-3 bundle includes the production native Mapbooks in <code>mapbook/</code>. Historical references are pre-populated from those files; student responses remain separate.</p>
-    </main>
-  </div>
-  <script src="manifest.js"></script>
-  <script src="app.js"></script>
+        function getVal(el) {
+            return el.type === 'checkbox' ? el.checked : el.value;
+        }
+        function setVal(el, v) {
+            if (el.type === 'checkbox')
+                el.checked = !!v;
+            else
+                el.value = v ?? '';
+        }
+        function valid(el) {
+            if (el.type === 'checkbox')
+                return el.checked;
+            const v = (el.value || '').trim();
+            if (!v)
+                return false;
+            const min = Number(el.dataset.min || 0);
+            return !min || wordCount(v) >= min;
+        }
+        function updateCounters() {
+            document.querySelectorAll('[data-count]').forEach(c => {
+                const el = document.getElementById(c.dataset.count);
+                const n = wordCount(el.value || '');
+                const min = Number(el.dataset.min || 0);
+                c.textContent = min ? `${n} words · minimum ${min}` : `${n} words`;
+                c.className = 'counter ' + (min ? (n >= min ? 'ok' : 'bad') : '');
+            });
+        }
+        function updateProgress() {
+            const done = required.filter(valid).length;
+            const pct = Math.round(done / required.length * 100);
+            bar.style.width = pct + '%';
+            progressText.textContent = `${pct}% complete · ${done}/${required.length} required fields`;
+            if (done === required.length) {
+                readiness.textContent = 'Status: READY — complete process trail present. You may still REOPEN any judgment.';
+                readiness.className = 'status ready';
+            }
+            else {
+                readiness.textContent = 'Status: REOPEN — complete the required process trail.';
+                readiness.className = 'status reopen';
+            }
+        }
+        function save() {
+            const data = {};
+            fields.forEach(f => data[f.dataset.field] = getVal(f));
+            data.savedAt = new Date().toISOString();
+            localStorage.setItem(KEY, JSON.stringify(data));
+            saveStatus.textContent = 'Saved locally · ' + new Date().toLocaleTimeString([], {
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+        function load() {
+            try {
+                const data = JSON.parse(localStorage.getItem(KEY) || '{}');
+                fields.forEach(f => {
+                    if (Object.prototype.hasOwnProperty.call(data, f.dataset.field))
+                        setVal(f, data[f.dataset.field]);
+                });
+            }
+            catch (e) {}
+            updateCounters();
+            updateProgress();
+        }
+        function v(id) {
+            return (document.getElementById(id)?.value || '').trim();
+        }
+        function buildCard() {
+            const name = v('studentName');
+            return `${name ? name + '\n' : ''}CHAPTER 11 OUTPUT CARD — THE ADAPTIVE MORAL COMMONWEALTH\n\nCase followed: ${v('focusCase') || v('caseMode')}\n\n1. HISTORICAL EVIDENCE\n${v('hist1')}\n${v('hist2')}\n\n2. WARRANT / UNCERTAINTY\nWarrant: ${v('warrant')}\nUncertainty/rebuttal: ${v('rebuttal')}\n\n3. STANDING\nInterpretive/operational standing: ${v('standingInterpret')}\nRepair standing: ${v('standingRepair')}\nAffected-party standing: ${v('standingAffected')}\n\n4. VISIBLE STABILITY / HIDDEN FRAGILITY\nVisible stability: ${v('visibleStability')}\nPossible hidden fragility: ${v('hiddenFragility')}\n\n5. CIVILIZATIONAL CHILIAGON / COMPRESSION\nOne important compression loss: ${v('compressionLoss')}\n\n6. SHARED TASK\n${v('sharedTask')}\n\n7. COOPERATION WITHOUT CONVERGENCE\nParticipants can still cooperate while disagreeing about: ${v('nonconvergence')}\n\n8. INSTITUTIONAL REPAIR\n${v('repairMechanism')}\n\n9. NEW BURDEN\n${v('newBurden')}\n\n10. REOPEN\nEvidence/outcome trigger: ${v('reopenEvidence')}\nStanding-based challenge: ${v('reopenStanding')}\nIf triggered: ${v('reopenAction')}\n\n11. BOUNDED JUDGMENT\n${v('finalJudgment')}\n\n12. CLAIM CEILING — WHAT I AM NOT CLAIMING\n${v('notClaiming')}\n\nWHAT CHANGED IN MY MAP\n${v('whatChanged')}\n\nOPEN QUESTION\n${v('openQuestion')}\n\nFirewalls carried forward: Map ≠ world · Evidence ≠ warrant · Attributed commitment ≠ acknowledged commitment · Expertise ≠ total authority · Near miss ≠ safety · Cooperation ≠ convergence · Model ≠ world · Recommendation ≠ authorization · Decision ≠ permanent closure.`;
+        }
+        function download(filename, text, type='text/plain') {
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(new Blob([text], {
+                type
+            }));
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            setTimeout(() => {
+                URL.revokeObjectURL(a.href);
+                a.remove();
+            }, 0);
+        }
+        fields.forEach(f => f.addEventListener('input', () => {
+            updateCounters();
+            updateProgress();
+            save();
+        }));
+        fields.forEach(f => f.addEventListener('change', () => {
+            updateCounters();
+            updateProgress();
+            save();
+        }));
+        document.getElementById('generateBtn').addEventListener('click', () => {
+            out.textContent = buildCard();
+            out.scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest'
+            });
+        });
+        document.getElementById('copyBtn').addEventListener('click', async () => {
+            const txt = buildCard();
+            out.textContent = txt;
+            try {
+                await navigator.clipboard.writeText(txt);
+                saveStatus.textContent = 'Output Card copied.';
+            } catch (e) {
+                saveStatus.textContent = 'Copy blocked by browser — select the Output Card manually.';
+            }
+        });
+        document.getElementById('downloadTxtBtn').addEventListener('click', () => download('CH11_Adaptive_Moral_Commonwealth_Output_Card.txt', buildCard()));
+        document.getElementById('downloadJsonBtn').addEventListener('click', () => {
+            const data = {};
+            fields.forEach(f => data[f.dataset.field] = getVal(f));
+            data.schema = 'CH11-AMC-FSP-v2.2';
+            data.exportedAt = new Date().toISOString();
+            download('CH11_Adaptive_Moral_Commonwealth_recovery.json', JSON.stringify(data, null, 2), 'application/json');
+        });
+        document.getElementById('printBtn').addEventListener('click', () => window.print());
+        document.getElementById('clearBtn').addEventListener('click', () => {
+            if (confirm('Clear the saved draft on this device?')) {
+                localStorage.removeItem(KEY);
+                fields.forEach(f => setVal(f, f.type === 'checkbox' ? false : ''));
+                out.textContent = 'Your Output Card will appear here.';
+                saveStatus.textContent = 'Saved draft cleared.';
+                updateCounters();
+                updateProgress();
+            }
+        });
+        load();
+    })();
+    </script>
 </body>
 </html>
